@@ -16,17 +16,17 @@
         var skipbutton = document.getElementById('skip-button');
 
         var hideOrShowSkipButton = function (data) {
-            switch(data.data.url) {
-            case '':
-            case 'signin':
-            case 'signup':
-            case 'reset_password':
-                skipbutton.disabled = false;
-                skipbutton.classList.remove('skipbutton-hidden');
-                break;
-            default:
-                skipbutton.classList.add('skipbutton-hidden');
-                break;
+            switch (data.data.url) {
+                case '':
+                case 'signin':
+                case 'signup':
+                case 'reset_password':
+                    skipbutton.disabled = false;
+                    skipbutton.classList.remove('skipbutton-hidden');
+                    break;
+                default:
+                    skipbutton.classList.add('skipbutton-hidden');
+                    break;
             }
         };
 
@@ -47,14 +47,14 @@
         skipbutton.onclick = onVerificationComplete;
 
         if (syncConfig) {
-            window.setTimeout(function() {
+            window.setTimeout(function () {
                 onVerificationComplete();
             }, 1000);
         } else {
             scene.dataset.content = 'true';
         }
 
-        Mozilla.Client.getFirefoxDetails(function(data) {
+        Mozilla.Client.getFirefoxDetails(function (data) {
             Mozilla.FxaIframe.init({
                 distribution: data.distribution,
                 gaEventName: 'firstrun-fxa',
@@ -70,10 +70,10 @@
         });
     };
 
-    document.onreadystatechange = function() {
+    document.onreadystatechange = function () {
         if (document.readyState === 'complete') {
             var syncConfig;
-            Mozilla.UITour.getConfiguration('sync', function(config) {
+            Mozilla.UITour.getConfiguration('sync', function (config) {
                 syncConfig = config.setup;
                 beginAnimation(syncConfig);
             });
