@@ -43,6 +43,35 @@ data-fxfocus-title="{{ _('Get the Firefox Focus Mobile App') }}"
     </div>
 
     {#
+      If JavaScript fails or is disabled, show the Firefox mobile QR code by default.
+      This is hidden when JS is available and all the regular view logic can take over.
+    #}
+    <div class="content-container nojs-fx-mobile-container" id="nojs-fx-mobile-container">
+      <header class="content-header">
+        <h2>{{ _('Get the Firefox Mobile App') }}</h2>
+        <p class="tagline">{{ _('Privacy minded. Packed with features. Perfect for multitasking on mobile.') }}</p>
+        <p>{{ _('All the things you love about Firefox, plus time-saving features. Sync bookmarks, passwords, and share links instantly between your devices.') }}</p>
+
+        <h3>{{ _('Scan the QR code to download the app on your device.') }}</h3>
+      </header>
+
+      <div class="qr-wrapper">
+        <img src="{{ static('img/firefox/whatsnew_61/qrcode-firefox.png') }}" data-mozillaonline-link="{{ static('img/firefox/whatsnew/qrcode-mozillaonline.png') }}" width="350" height="350" alt="{{ _('QR code') }}">
+      </div>
+
+      <ul class="mobile-download-buttons">
+        <li class="android">
+          {{ google_play_button(href='https://mzl.la/2M6EXbI', id='playStoreLink') }}
+        </li>
+        <li class="ios">
+          <a id="appStoreLink" href="https://mzl.la/2K035Mm" data-link-type="download" data-download-os="iOS">
+            <img src="{{ l10n_img('firefox/ios/btn-app-store.svg') }}" alt="{{ _('Download on the App Store') }}" width="152" height="45">
+          </a>
+        </li>
+      </ul>
+    </div>{#-- /#nojs-fx-mobile-container --#}
+
+    {#
       If the user is not signed in to Sync, display the FxA iframe.
     #}
     <div class="content-container fxa-container" id="fxa-container">
