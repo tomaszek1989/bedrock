@@ -116,8 +116,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     h3 {
-        @include font-size-level5;
-        margin-top: 40px;
+        @include font-size-level6;
+        margin-top: 60px;
+        font-weight: bold;
     }
 
     .tagline {
@@ -140,6 +141,11 @@ h1, h2, h3, h4, h5, h6 {
         a:link,
         a:visited {
             color: #fff;
+
+            &:hover,
+            &:focus {
+                color: #ededf0;
+            }
         }
     }
 
@@ -162,6 +168,62 @@ html[dir="rtl"] .content-header {
     @media #{$mq-tablet} {
         text-align: right;
     }
+}
+
+@media #{$mq-tablet} {
+    .content-container {
+        width: 680px;
+    }
+}
+
+@media #{$mq-desktop} {
+    .content-container {
+        width: 840px;
+    }
+}
+
+// QR wrapper
+.qr-wrapper {
+    max-width: 280px;
+    margin: 0 auto;
+
+    @media #{$mq-tablet} {
+        max-width: none;
+    }
+}
+
+
+//* -------------------------------------------------------------------------- */
+// Default to Firefox Mobile QR code when JS fails
+.no-js {
+    .nojs-fx-mobile-container {
+        display: block;
+
+        @media #{$mq-tablet} {
+            display: grid;
+            grid-column-gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+
+            .mobile-download-buttons {
+                grid-column: 2;
+                margin: 20px 0;
+
+                li {
+                    margin: 0;
+                }
+            }
+        }
+
+        @media #{$mq-desktop} {
+            grid-column-gap: 60px;
+            grid-template-columns: auto 350px;
+        }
+    }
+}
+
+// Hide when JS is available
+.js .nojs-fx-mobile-container {
+    display: none;
 }
 
 
@@ -248,26 +310,14 @@ html[dir="rtl"] .content-header {
 .no-send-to-device.show-fx-mobile {
     .fx-mobile-container {
         display: block;
-    }
 
-    @media #{$mq-tablet} {
-        .content-container {
-            width: 680px;
-        }
-
-        .fx-mobile-container {
+        @media #{$mq-tablet} {
             display: grid;
             grid-column-gap: 20px;
             grid-template-columns: repeat(2, 1fr);
         }
-    }
 
-    @media #{$mq-desktop} {
-        .content-container {
-            width: 840px;
-        }
-
-        .fx-mobile-container {
+        @media #{$mq-desktop} {
             grid-column-gap: 60px;
             grid-template-columns: auto 350px;
         }
@@ -295,26 +345,14 @@ html[dir="rtl"] .content-header {
 .no-send-to-device.show-focus {
     .focus-container {
         display: block;
-    }
 
-    @media #{$mq-tablet} {
-        .content-container {
-            width: 680px;
-        }
-
-        .focus-container {
+        @media #{$mq-tablet} {
             display: grid;
             grid-column-gap: 20px;
             grid-template-columns: repeat(2, 1fr);
         }
-    }
 
-    @media #{$mq-desktop} {
-        .content-container {
-            width: 840px;
-        }
-
-        .focus-container {
+        @media #{$mq-desktop} {
             grid-column-gap: 60px;
             grid-template-columns: auto 350px;
         }
@@ -342,41 +380,20 @@ html[dir="rtl"] .content-header {
 .no-send-to-device.show-klar {
     .klar-container {
         display: block;
-    }
 
-    @media #{$mq-tablet} {
-        .content-container {
-            width: 680px;
-        }
-
-        .klar-container {
+        @media #{$mq-tablet} {
             display: grid;
             grid-column-gap: 20px;
             grid-template-columns: repeat(2, 1fr);
         }
-    }
 
-    @media #{$mq-desktop} {
-        .content-container {
-            width: 840px;
-        }
-
-        .klar-container {
+        @media #{$mq-desktop} {
             grid-column-gap: 60px;
             grid-template-columns: auto 350px;
         }
     }
 }
 
-// QR wrapper
-.qr-wrapper {
-    max-width: 280px;
-    margin: 0 auto;
-
-    @media #{$mq-tablet} {
-        max-width: none;
-    }
-}
 
 //* -------------------------------------------------------------------------- */
 // Store badges

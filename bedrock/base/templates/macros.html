@@ -138,6 +138,8 @@
 </a>
 {%- endmacro %}
 
+
+{# send_to_device macro is being deprecated in favor of the send_yourself macro below. #}
 {% macro send_to_device(platform, include_title=True, title_text='', include_logo=False, ios_link='', spinner_color='', message_set='default') %}
   {# If no App Store link is specified, use base with default "ct" param value #}
   {# See https://bugzilla.mozilla.org/show_bug.cgi?id=1196310#c23 #}
@@ -237,6 +239,8 @@
   </section>
 {%- endmacro %}
 
+{# The send_yourself macro refactors and replaces the send_to_device macro above.
+   This version better supports multiple products and avoids duplicate IDs so more than one widget can be embedded in a page. #}
 {% macro send_yourself(include_title=True, title_text='', spinner_color='', message_set='default', id='send-yourself', product='firefox') %}
   <section id="{{ id }}" class="mzp-c-sendyourself {% if include_title %}mzp-has-title{% endif %}" data-countries="{{ send_to_device_sms_countries(message_set) }}"{% if spinner_color %} data-spinner-color="{{ spinner_color }}"{% endif %}>
     <div class="mzp-c-sendyourself-container">
